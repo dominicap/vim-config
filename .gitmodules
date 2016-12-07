@@ -10,6 +10,10 @@
     path = bundle/comment
     url  = git://github.com/tpope/vim-commentary
 
+[submodule "emmet"]
+    path = bundle/emmet
+    url  = git://github.com/mattn/emmet-vim
+
 [submodule "fugitive"]
     path = bundle/fugitive
     url  = git://github.com/tpope/vim-fugitive
