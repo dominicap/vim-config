@@ -35,7 +35,7 @@
     url  = git://github.com/majutsushi/tagbar
 
 [submodule "themes"]
-    path = bundle/tagbar
+    path = bundle/themes
     url  = git://github.com/vim-airline/vim-airline-themes
 
 [submodule "vim-coffee"]
