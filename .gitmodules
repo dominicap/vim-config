@@ -1,0 +1,51 @@
+[submodule "ag"]
+    path = bundle/ag
+    url  = git://github.com/rking/ag.vim
+
+[submodule "airline"]
+    path = bundle/airline
+    url  = git://github.com/vim-airline/vim-airline
+
+[submodule "comment"]
+    path = bundle/comment
+    url  = git://github.com/tpope/vim-commentary
+
+[submodule "fugitive"]
+    path = bundle/fugitive
+    url  = git://github.com/tpope/vim-fugitive
+
+[submodule "fuzzy-finder"]
+    path = bundle/fuzzy-finder
+    url  = git://github.com/kien/ctrlp.vim
+
+[submodule "mate"]
+    path = bundle/mate
+    url  = git://github.com/Raimondi/delimitMate
+
+[submodule "supertab"]
+    path = bundle/supertab
+    url  = git://github.com/ervandew/supertab
+
+[submodule "surround"]
+    path = bundle/surround
+    url  = git://github.com/tpope/vim-surround
+
+[submodule "tagbar"]
+    path = bundle/tagbar
+    url  = git://github.com/majutsushi/tagbar
+
+[submodule "themes"]
+    path = bundle/tagbar
+    url  = git://github.com/vim-airline/vim-airline-themes
+
+[submodule "vim-coffee"]
+    path = bundle/vim-coffee
+    url  = git://https://github.com/kchmck/vim-coffee-script
+
+[submodule "vim-julia"]
+    path = bundle/vim-julia
+    url  = git://https://github.com/JuliaEditorSupport/julia-vim
+
+[submodule "vim-rails"]
+    path = bundle/vim-rails
+    url  = git://https://github.com/tpope/vim-rails
