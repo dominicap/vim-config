@@ -78,7 +78,7 @@ execute pathogen#infect()
 Helptags
 
 " --- Update Package Command ---
-command UpdatePkg execute "!zsh update"
+command UpdatePkg execute "!./update"
 
 " --- Airline Settings ---
 set noshowmode
