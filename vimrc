@@ -78,7 +78,7 @@ execute pathogen#infect()
 Helptags
 
 " --- Update Package Command ---
-command UpdatePkg execute "!./update"
+command UpdatePkg execute "!cd ~/.vim && ./update"
 
 " --- Airline Settings ---
 set noshowmode
