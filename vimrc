@@ -68,7 +68,7 @@ autocmd BufWritePre * %s/\s\+$//e
 let g:airline_theme='serene'
 
 set t_Co=256
-colorscheme koehler
+colorscheme onedark
 
 " --- Shell Settings ---
 noremap <C-d> :sh <cr>
