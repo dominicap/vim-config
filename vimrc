@@ -64,12 +64,6 @@ set showbreak=↪
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" --- Color Settings ---
-let g:airline_theme='serene'
-
-set t_Co=256
-colorscheme onedark
-
 " --- Shell Settings ---
 noremap <C-d> :sh <cr>
 
@@ -110,9 +104,13 @@ nnoremap <tab><tab> :CtrlP<CR>
 " --- Fugitive Settings ---
 set diffopt+=vertical
 
-" --- Final Syntax Settings ---
+" --- Syntax & Color Settings ---
 syntax on
 highlight clear LineNr
 highlight clear SignColumn
 highlight NonText guifg=bg
 filetype plugin indent on
+
+set t_Co=256
+colorscheme onedark
+let g:airline_theme = 'onedark'
