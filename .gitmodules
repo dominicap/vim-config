@@ -54,6 +54,10 @@
     path = bundle/vim-rails
     url  = git://https://github.com/tpope/vim-rails
 
+[submodule "vim-rust"]
+    path = bundle/vim-rust
+    url = git://https://github.com/rust-lang/rust.vim
+
 [submodule "vim-swift"]
     path = bundle/vim-swift
     url  = git://https://github.com/keith/swift.vim

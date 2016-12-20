@@ -78,6 +78,8 @@ command UpdatePkg execute "!cd ~/.vim && ./update"
 set noshowmode
 set laststatus=2
 
+let g:airline_theme = 'serene'
+
 let g:airline_detect_paste = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -112,5 +114,4 @@ highlight NonText guifg=bg
 filetype plugin indent on
 
 set t_Co=256
-colorscheme onedark
-let g:airline_theme = 'onedark'
+colorscheme koehler
