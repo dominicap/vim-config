@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Update Pathogen
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-# Update Packages
-cd ~/.vim/bundle && git submodule foreach git pull origin master
