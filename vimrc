@@ -23,8 +23,10 @@ autocmd Filetype go setlocal tabstop=8 shiftwidth=8 softtabstop=8
 autocmd Filetype swift setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype julia setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype coffee setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set tabstop=4
 set shiftwidth=4
@@ -129,6 +131,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 set rtp+=/usr/local/opt/fzf
 
 nnoremap <tab><tab> :FZF --no-color <CR>
+nnoremap <C-tab> :Buffers <CR>
 
 let g:fzf_colors =
             \ { 'fg':    ['fg', 'Normal'],
@@ -152,10 +155,8 @@ autocmd! FileType fzf set laststatus=0 noruler
 " --- Fugitive Settings ---
 set diffopt+=vertical
 
-" --- EasyAlign Settings ---
-
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
+" --- Emmet Settings ---
+let g:user_emmet_leader_key=','
 
 " --- Syntax & Color Settings ---
 filetype plugin indent on
