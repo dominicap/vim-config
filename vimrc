@@ -114,24 +114,19 @@ function! AirlineThemePatch(palette)
     endfor
 endfunction
 
-" --- Ack Search Settings ---
-nnoremap \ :Ack<SPACE>
-nnoremap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ackprg = 'ag --vimgrep'
-endif
-
 " --- Auto Completion Settings ---
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " ---- FZF Settings ---
 set rtp+=/usr/local/opt/fzf
 
+autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
+
 nnoremap <tab><tab> :FZF --no-color <CR>
 nnoremap <C-tab> :Buffers <CR>
+
+nnoremap \ :Ag<Space>
+nnoremap <C-\> :BLines<Space>
 
 let g:fzf_colors =
             \ { 'fg':    ['fg', 'Normal'],

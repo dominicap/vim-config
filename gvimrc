@@ -2,6 +2,7 @@ if has("gui_running")
     set guioptions=
     autocmd GUIEnter * set vb t_vb=
 
+    " set guifont=SF\ Mono:h16
     set guifont=Courier:h20
     set lines=36 columns=84
 
