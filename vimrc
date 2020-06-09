@@ -37,7 +37,7 @@ set termwinsize=12x0
 
 let loaded_netrwPlugin = 1
 
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+imap <C-BS> <C-W>
 
 set cino=(0
 
@@ -54,22 +54,16 @@ nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>}]
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " --- White Space Settings ---
-nmap <leader>l :set list!<CR>
+nmap <silent> <leader>l :set list!<CR>
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅,space:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" --- Shell Settings ---
-noremap <C-d> :sh <cr>
-
 " --- Package Manager Settings ---
 execute pathogen#infect()
 Helptags
-
-" --- Update Package Command ---
-command UpdatePkg execute "!cd ~/.vim && ./update"
 
 " --- Airline Settings ---
 set noshowmode
@@ -115,7 +109,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " --- Ag Settings ---
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ackprg = 'ag --vimgrep'
 endif
 
@@ -149,18 +142,24 @@ let g:fzf_colors =
 autocmd! FileType fzf set laststatus=0 noruler
             \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
+" --- Limelight Settings ---
+nnoremap <silent> <C-l> :Limelight!! <CR>
+
+" --- CodeFmt Settings ---
+nnoremap <silent> <C-f> :FormatCode <CR>
+
 " --- Fugitive Settings ---
 set diffopt+=vertical
 
 " --- Commentary Settings ---
-nmap <C-[> <Plug>CommentaryLine
+nmap <C-@> <Plug>CommentaryLine
 
 nmap <C-_> <Plug>Commentary
 xmap <C-_> <Plug>Commentary
 omap <C-_> <Plug>Commentary
 
 " --- Emmet Settings ---
-let g:user_emmet_leader_key='-'
+let g:user_emmet_leader_key=','
 
 " --- Syntax & Color Settings ---
 filetype plugin indent on
