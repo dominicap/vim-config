@@ -4,6 +4,7 @@ set encoding=utf-8
 set nocompatible
 filetype off
 
+set shortmess=I
 let loaded_netrwPlugin = 1
 
 " --- General Settings ---
@@ -56,39 +57,28 @@ autocmd BufWritePre * %s/\s\+$//e
 set noshowmode
 set laststatus=2
 
-let g:airline_theme = "monochrome"
-
-let g:airline_detect_paste = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:airline_powerline_fonts = 0
-
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = ''
-
-let g:airline_symbols.branch = ''
-
-let s:saved_theme = []
-
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-function! AirlineThemePatch(palette)
-    for colors in values(a:palette)
-        if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
-            let s:saved_theme = colors.airline_c
-        endif
-        if has_key(colors, 'airline_term')
-            let colors.airline_term = s:saved_theme
-        endif
-    endfor
-endfunction
+let g:lightline = {
+            \ 'colorscheme': 'base16_atelier_lakeside',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'branch' ],
+            \             [ 'relativepath' ] ],
+            \   'right': [ [ 'clock'],
+            \              [ 'info'],
+            \              [ 'filetype' ] ]
+            \ },
+            \ 'component': {
+            \   'clock': '%{strftime("%I:%M %p")}',
+            \   'info': '%4p%% %2l:%-2v'
+            \ },
+            \ 'component_type': {
+            \   'info': 'raw'
+            \ },
+            \ 'component_function': {
+            \   'branch': 'FugitiveHead'
+            \ },
+            \ 'subseparator': { 'left': '', 'right': '' }
+            \ }
 
 " --- MuComplete Settings ---
 set completeopt+=menuone
