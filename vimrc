@@ -53,7 +53,7 @@ set showbreak=↪
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" --- Airline Settings ---
+" --- Lightline Settings ---
 set noshowmode
 set laststatus=2
 
@@ -85,6 +85,9 @@ set completeopt+=menuone
 set completeopt+=noselect
 
 set shortmess+=c
+
+" --- Gutentag Settings ---
+let g:gutentags_cache_dir = '~/.vim/pack/bundle/start/gutentags/.cache'
 
 " --- Ag Settings ---
 if executable('ag')

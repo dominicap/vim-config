@@ -13,6 +13,9 @@
 [submodule "pack/bundle/start/glaive"]
 	path = pack/bundle/start/glaive
 	url = https://github.com/google/vim-glaive.git
+[submodule "pack/bundle/start/gutentags"]
+	path = pack/bundle/start/gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
 [submodule "pack/bundle/start/lightline"]
 	path = pack/bundle/start/lightline
 	url = https://github.com/itchyny/lightline.vim
