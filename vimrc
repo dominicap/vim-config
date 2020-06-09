@@ -39,11 +39,6 @@ let loaded_netrwPlugin = 1
 
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-" --- Format Settings ---
-map <C-I> :py3f ~/.vim/bundle/vim-swift/swift-format.py<cr>
-
-autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool
-
 set cino=(0
 
 " --- I-Beam Settings ---
@@ -117,6 +112,13 @@ endfunction
 " --- Auto Completion Settings ---
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" --- Ag Settings ---
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ackprg = 'ag --vimgrep'
+endif
+
 " ---- FZF Settings ---
 set rtp+=/usr/local/opt/fzf
 
@@ -150,8 +152,15 @@ autocmd! FileType fzf set laststatus=0 noruler
 " --- Fugitive Settings ---
 set diffopt+=vertical
 
+" --- Commentary Settings ---
+nmap <C-[> <Plug>CommentaryLine
+
+nmap <C-_> <Plug>Commentary
+xmap <C-_> <Plug>Commentary
+omap <C-_> <Plug>Commentary
+
 " --- Emmet Settings ---
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key='-'
 
 " --- Syntax & Color Settings ---
 filetype plugin indent on
