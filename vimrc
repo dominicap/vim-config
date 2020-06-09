@@ -4,6 +4,8 @@ set encoding=utf-8
 set nocompatible
 filetype off
 
+let loaded_netrwPlugin = 1
+
 " --- General Settings ---
 set backspace=indent,eol,start
 set ruler
@@ -17,16 +19,9 @@ set hidden
 set splitbelow
 
 set autoindent
+set smartindent
 
-autocmd Filetype go setlocal tabstop=8 shiftwidth=8 softtabstop=8
-
-autocmd Filetype swift setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
-autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype julia setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype coffee setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
+set cino=(0
 
 set tabstop=4
 set shiftwidth=4
@@ -35,11 +30,7 @@ set expandtab
 
 set termwinsize=12x0
 
-let loaded_netrwPlugin = 1
-
 imap <C-BS> <C-W>
-
-set cino=(0
 
 " --- I-Beam Settings ---
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -54,16 +45,12 @@ nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>}]
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " --- White Space Settings ---
-nmap <silent> <leader>l :set list!<CR>
+nmap <silent> <leader>w :set list!<CR>
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅,space:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 autocmd BufWritePre * %s/\s\+$//e
-
-" --- Package Manager Settings ---
-execute pathogen#infect()
-Helptags
 
 " --- Airline Settings ---
 set noshowmode
@@ -103,13 +90,15 @@ function! AirlineThemePatch(palette)
     endfor
 endfunction
 
-" --- Auto Completion Settings ---
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" --- MuComplete Settings ---
+set completeopt+=menuone
+set completeopt+=noselect
+
+set shortmess+=c
 
 " --- Ag Settings ---
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
-    let g:ackprg = 'ag --vimgrep'
 endif
 
 " ---- FZF Settings ---
@@ -118,7 +107,7 @@ set rtp+=/usr/local/opt/fzf
 autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 
 nnoremap <tab><tab> :FZF --no-color <CR>
-nnoremap <C-tab> :Buffers <CR>
+nnoremap <S> :Buffers <CR>
 
 nnoremap \ :Ag<Space>
 nnoremap <C-\> :BLines<Space>
