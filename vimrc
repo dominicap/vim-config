@@ -64,23 +64,28 @@ let g:lightline = {
             \             [ 'branch' ],
             \             [ 'relativepath' ] ],
             \   'right': [ [ 'clock'],
-            \              [ 'info'],
+            \              [ 'numberinfo'],
             \              [ 'filetype' ] ]
             \ },
             \ 'component': {
             \   'clock': '%{strftime("%I:%M %p")}',
             \   'filetype': '%{&ft!=#""?&ft:""}',
-            \   'info': '%4p%%  %l:%v ',
+            \   'numberinfo': '%4p%%  %l:%v ',
             \   'relativepath': '%{expand("%:f")!=#""?expand("%:f"):""}'
             \ },
             \ 'component_function': {
-            \   'branch': 'FugitiveHead'
+            \   'branch': 'FugitiveHead',
+            \   'numberinfo': 'NumberInfo'
             \ },
             \ 'component_type': {
-            \   'info': 'raw'
+            \   'numberinfo': 'raw'
             \ },
             \ 'subseparator': { 'left': '', 'right': '' }
             \ }
+
+function! NumberInfo()
+    return lightline#mode() ==# "TERMINAL" ? "" : printf(" %d%%  %d:%d ", (100 * line(".") / line("$")), line('.'), col('.'))
+endfunction
 
 " --- MuComplete Settings ---
 set completeopt+=menuone
