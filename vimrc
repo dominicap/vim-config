@@ -69,13 +69,15 @@ let g:lightline = {
             \ },
             \ 'component': {
             \   'clock': '%{strftime("%I:%M %p")}',
-            \   'info': '%4p%% %2l:%-2v'
-            \ },
-            \ 'component_type': {
-            \   'info': 'raw'
+            \   'filetype': '%{&ft!=#""?&ft:""}',
+            \   'info': '%4p%%  %l:%v ',
+            \   'relativepath': '%{expand("%:f")!=#""?expand("%:f"):""}'
             \ },
             \ 'component_function': {
             \   'branch': 'FugitiveHead'
+            \ },
+            \ 'component_type': {
+            \   'info': 'raw'
             \ },
             \ 'subseparator': { 'left': '', 'right': '' }
             \ }
