@@ -4,9 +4,6 @@ set encoding=utf-8
 set nocompatible
 filetype off
 
-set shortmess=I
-let loaded_netrwPlugin = 1
-
 " --- General Settings ---
 set backspace=indent,eol,start
 set ruler
@@ -15,9 +12,12 @@ set relativenumber
 set showcmd
 set incsearch
 set hlsearch
-set mouse=a
 set hidden
 set splitbelow
+
+set shortmess=IFc
+
+set mouse=a
 
 set autoindent
 set smartindent
@@ -31,7 +31,7 @@ set expandtab
 
 set termwinsize=12x0
 
-imap <C-BS> <C-W>
+let loaded_netrwPlugin = 1
 
 " --- I-Beam Settings ---
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -45,8 +45,22 @@ runtime macros/matchit.vim
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>}]
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
+" --- Movement Settings ---
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+
+inoremap <C-j> <ESC>:m .+1<CR>==gi
+inoremap <C-k> <ESC>:m .-2<CR>==gi
+
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" --- Buffer Movement Settings ---
+nnoremap <silent> <Leader>h :bp <CR>
+nnoremap <silent> <Leader>l :bn <CR>
+
 " --- White Space Settings ---
-nmap <silent> <leader>w :set list!<CR>
+nmap <silent> <Leader>w :set list!<CR>
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅,space:⋅,extends:❯,precedes:❮
 set showbreak=↪
@@ -71,7 +85,7 @@ let g:lightline = {
             \   'clock': '%{strftime("%I:%M %p")}',
             \   'filetype': '%{&ft!=#""?&ft:""}',
             \   'numberinfo': '%4p%%  %l:%v ',
-            \   'relativepath': '%{expand("%:f")!=#""?expand("%:f"):""}'
+            \   'relativepath': '%<%{RelativePath()}'
             \ },
             \ 'component_function': {
             \   'branch': 'FugitiveHead',
@@ -80,18 +94,28 @@ let g:lightline = {
             \ 'component_type': {
             \   'numberinfo': 'raw'
             \ },
-            \ 'subseparator': { 'left': '', 'right': '' }
-            \ }
+            \ 'subseparator': { 'left': '', 'right': '' } }
 
 function! NumberInfo()
-    return lightline#mode() ==# "TERMINAL" ? "" : printf(" %d%%  %d:%d ", (100 * line(".") / line("$")), line('.'), col('.'))
+  if lightline#mode() ==# "TERMINAL"
+    return ""
+  else
+    return printf(" %d%%  %d:%d ", (100 * line(".") / line("$")), line('.'), col('.'))
+  endif
+endfunction
+
+function! RelativePath() abort
+  return expand('%:p') !=# '' ? expand('%:p') : ''
 endfunction
 
 " --- MuComplete Settings ---
 set completeopt+=menuone
 set completeopt+=noselect
 
-set shortmess+=c
+inoremap <silent> <plug>(MUcompleteFwdKey) <right>
+imap <right> <plug>(MUcompleteCycFwd)
+inoremap <silent> <plug>(MUcompleteBwdKey) <left>
+imap <left> <plug>(MUcompleteCycBwd)
 
 " --- Gutentag Settings ---
 let g:gutentags_cache_dir = '~/.vim/pack/bundle/start/gutentags/.cache'
@@ -106,11 +130,11 @@ set rtp+=/usr/local/opt/fzf
 
 autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 
-nnoremap <tab><tab> :FZF --no-color <CR>
-nnoremap <S> :Buffers <CR>
+nnoremap <tab> :FZF --no-color <CR>
+nnoremap <Leader><tab> :Buffers <CR>
 
-nnoremap \ :Ag<Space>
-nnoremap <C-\> :BLines<Space>
+nnoremap ` :Ag<Space>
+nnoremap <Leader>` :BLines<Space>
 
 let g:fzf_colors =
             \ { 'fg':    ['fg', 'Normal'],
@@ -131,8 +155,8 @@ let g:fzf_colors =
 autocmd! FileType fzf set laststatus=0 noruler
             \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
-" --- Limelight Settings ---
-nnoremap <silent> <C-l> :Limelight!! <CR>
+" --- Limelight (Dim) Settings ---
+nnoremap <silent> <Leader>d :Limelight!! <CR>
 
 " --- CodeFmt Settings ---
 nnoremap <silent> <C-f> :FormatCode <CR>
@@ -141,8 +165,6 @@ nnoremap <silent> <C-f> :FormatCode <CR>
 set diffopt+=vertical
 
 " --- Commentary Settings ---
-nmap <C-@> <Plug>CommentaryLine
-
 nmap <C-_> <Plug>Commentary
 xmap <C-_> <Plug>Commentary
 omap <C-_> <Plug>Commentary

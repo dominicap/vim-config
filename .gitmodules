@@ -22,6 +22,9 @@
 [submodule "pack/bundle/start/limelight"]
 	path = pack/bundle/start/limelight
 	url = https://github.com/junegunn/limelight.vim.git
+[submodule "pack/bundle/start/lsc"]
+	path = pack/bundle/start/lsc
+	url = https://github.com/natebosch/vim-lsc
 [submodule "pack/bundle/start/maktaba"]
 	path = pack/bundle/start/maktaba
 	url = https://github.com/google/vim-maktaba.git
