@@ -14,57 +14,57 @@ if exists("b:current_syntax")
 endif
 
 syn keyword silStage skipwhite nextgroup=silStages
-      \ sil_stage
+            \ sil_stage
 syn keyword silStages
-      \ canonical
-      \ raw
+            \ canonical
+            \ raw
 
 syn match silIdentifier skipwhite
-      \ /@\<[A-Za-z_0-9]\+\>/
+            \ /@\<[A-Za-z_0-9]\+\>/
 
 syn match silConvention skipwhite
-      \ /$\?@convention/
+            \ /$\?@convention/
 syn region silConvention contained contains=silConventions
-      \ start="@convention(" end=")"
+            \ start="@convention(" end=")"
 syn keyword silConventions
-      \ block
-      \ c
-      \ method
-      \ objc_method
-      \ sil_differentiability_witness
-      \ thick
-      \ thin
-      \ witness_method
+            \ block
+            \ c
+            \ method
+            \ objc_method
+            \ sil_differentiability_witness
+            \ thick
+            \ thin
+            \ witness_method
 
 syn match silFunctionType skipwhite
-      \ /@\(\<autoreleased\>\|\<callee_guaranteed\>\|\<callee_owned\>\|\<error\>\|\<guaranteed\>\|\<in\>\|\<in_constant\>\|\<in_guaranteed\>\|\<inout\>\|\<inout_aliasable\>\|\<noescape\>\|\<out\>\|\<owned\>\)/
+            \ /@\(\<autoreleased\>\|\<callee_guaranteed\>\|\<callee_owned\>\|\<error\>\|\<guaranteed\>\|\<in\>\|\<in_constant\>\|\<in_guaranteed\>\|\<inout\>\|\<inout_aliasable\>\|\<noescape\>\|\<out\>\|\<owned\>\)/
 syn match silMetatypeType skipwhite
-      \ /@\(\<thick\>\|\<thin\>\|\<objc\>\)/
+            \ /@\(\<thick\>\|\<thin\>\|\<objc\>\)/
 
 " TODO: handle [tail_elems sil-type * sil-operand]
 syn region silAttribute contains=silAttributes
-      \ start="\[" end="\]"
+            \ start="\[" end="\]"
 syn keyword silAttributes contained containedin=silAttribute
-      \ abort
-      \ deinit
-      \ delegatingself
-      \ derivedself
-      \ derivedselfonly
-      \ dynamic
-      \ exact
-      \ init
-      \ modify
-      \ mutating
-      \ objc
-      \ open
-      \ read
-      \ rootself
-      \ stack
-      \ static
-      \ strict
-      \ unknown
-      \ unsafe
-      \ var
+            \ abort
+            \ deinit
+            \ delegatingself
+            \ derivedself
+            \ derivedselfonly
+            \ dynamic
+            \ exact
+            \ init
+            \ modify
+            \ mutating
+            \ objc
+            \ open
+            \ read
+            \ rootself
+            \ stack
+            \ static
+            \ strict
+            \ unknown
+            \ unsafe
+            \ var
 
 syn keyword swiftImport import skipwhite nextgroup=swiftImportModule
 syn match swiftImportModule /\<[A-Za-z_][A-Za-z_0-9]*\>/ contained nextgroup=swiftImportComponent

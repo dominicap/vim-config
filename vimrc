@@ -19,6 +19,11 @@ set shortmess=IFc
 
 set mouse=a
 
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
 set autoindent
 set smartindent
 
@@ -54,10 +59,6 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
-
-" --- Buffer Movement Settings ---
-nnoremap <silent> <Leader>h :bp <CR>
-nnoremap <silent> <Leader>l :bn <CR>
 
 " --- White Space Settings ---
 nmap <silent> <Leader>w :set list!<CR>
@@ -130,11 +131,8 @@ set rtp+=/usr/local/opt/fzf
 
 autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 
-nnoremap <tab> :FZF --no-color <CR>
+nnoremap <tab><tab> :FZF --no-color <CR>
 nnoremap <Leader><tab> :Buffers <CR>
-
-nnoremap ` :Ag<Space>
-nnoremap <Leader>` :BLines<Space>
 
 let g:fzf_colors =
             \ { 'fg':    ['fg', 'Normal'],
@@ -155,19 +153,14 @@ let g:fzf_colors =
 autocmd! FileType fzf set laststatus=0 noruler
             \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
-" --- Limelight (Dim) Settings ---
-nnoremap <silent> <Leader>d :Limelight!! <CR>
+" --- Limelight Settings ---
+nnoremap <silent> <Leader>l :Limelight!! <CR>
 
 " --- CodeFmt Settings ---
 nnoremap <silent> <C-f> :FormatCode <CR>
 
 " --- Fugitive Settings ---
 set diffopt+=vertical
-
-" --- Commentary Settings ---
-nmap <C-_> <Plug>Commentary
-xmap <C-_> <Plug>Commentary
-omap <C-_> <Plug>Commentary
 
 " --- Emmet Settings ---
 let g:user_emmet_leader_key=','

@@ -7,7 +7,7 @@ if has("gui_running")
     set guifont=SF\ Mono:h16
     set lines=36 columns=84
 
-    nnoremap <tab> :FZF <CR>
+    nnoremap <tab><tab> :FZF <CR>
 
     set termguicolors
     colorscheme base16-atelier-lakeside
