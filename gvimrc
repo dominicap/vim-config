@@ -4,13 +4,13 @@ if has("gui_running")
 
     set macmeta
 
-    set guifont=SF\ Mono:h16
+    set guifont=Source\ Code\ Pro:h18 " SF\ Mono:h16
     set lines=36 columns=84
 
     nnoremap <tab><tab> :FZF <CR>
 
     set termguicolors
-    colorscheme base16-atelier-lakeside
+    colorscheme base16-chalk
 
     set wrap!
 

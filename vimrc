@@ -73,29 +73,29 @@ set noshowmode
 set laststatus=2
 
 let g:lightline = {
-            \ 'colorscheme': 'base16_atelier_lakeside',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'branch' ],
-            \             [ 'relativepath' ] ],
-            \   'right': [ [ 'clock'],
-            \              [ 'numberinfo'],
-            \              [ 'filetype' ] ]
-            \ },
-            \ 'component': {
-            \   'clock': '%{strftime("%I:%M %p")}',
-            \   'filetype': '%{&ft!=#""?&ft:""}',
-            \   'numberinfo': '%4p%%  %l:%v ',
-            \   'relativepath': '%<%{RelativePath()}'
-            \ },
-            \ 'component_function': {
-            \   'branch': 'FugitiveHead',
-            \   'numberinfo': 'NumberInfo'
-            \ },
-            \ 'component_type': {
-            \   'numberinfo': 'raw'
-            \ },
-            \ 'subseparator': { 'left': '', 'right': '' } }
+      \ 'colorscheme': 'base16_chalk',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'branch' ],
+      \             [ 'relativepath' ] ],
+      \   'right': [ [ 'clock'],
+      \              [ 'numberinfo'],
+      \              [ 'filetype' ] ]
+      \ },
+      \ 'component': {
+      \   'clock': '%{strftime("%I:%M %p")}',
+      \   'filetype': '%{&ft!=#""?&ft:""}',
+      \   'numberinfo': '%4p%%  %l:%v ',
+      \   'relativepath': '%<%{RelativePath()}'
+      \ },
+      \ 'component_function': {
+      \   'branch': 'FugitiveHead',
+      \   'numberinfo': 'NumberInfo'
+      \ },
+      \ 'component_type': {
+      \   'numberinfo': 'raw'
+      \ },
+      \ 'subseparator': { 'left': '', 'right': '' } }
 
 function! NumberInfo()
   if lightline#mode() ==# "TERMINAL"
@@ -108,6 +108,24 @@ endfunction
 function! RelativePath() abort
   return expand('%:p') !=# '' ? expand('%:p') : ''
 endfunction
+
+" --- LSC Settings ---
+
+let g:lsc_server_commands = {
+      \  "dart": {
+      \    "command": "dart " . $DART_SDK . "/snapshots/analysis_server.dart.snapshot --lsp --client-id vim --completion-model " . $DART_SDK . "/model/lexeme/",
+      \    "message_hooks": {
+      \      "initialize": {
+      \        "initializationOptions": {
+      \          "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \        }
+      \      }
+      \    },
+      \    "log_level": -1,
+      \    "suppress_stderr": v:true
+      \ } }
+
+let g:lsc_auto_map = v:true
 
 " --- MuComplete Settings ---
 set completeopt+=menuone
@@ -123,11 +141,13 @@ let g:gutentags_cache_dir = '~/.vim/pack/bundle/start/gutentags/.cache'
 
 " --- Ag Settings ---
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " ---- FZF Settings ---
 set rtp+=/usr/local/opt/fzf
+
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 
@@ -135,23 +155,23 @@ nnoremap <tab><tab> :FZF --no-color <CR>
 nnoremap <Leader><tab> :Buffers <CR>
 
 let g:fzf_colors =
-            \ { 'fg':    ['fg', 'Normal'],
-            \ 'bg':      ['bg', 'Normal'],
-            \ 'hl':      ['fg', 'String'],
-            \ 'hl+':     ['fg', 'Statement'],
-            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':     ['bg', 'Normal'],
-            \ 'info':    ['fg', 'Keyword'],
-            \ 'border':  ['fg', 'Ignore'],
-            \ 'prompt':  ['fg', 'Statement'],
-            \ 'pointer': ['fg', 'Statement'],
-            \ 'marker':  ['fg', 'Keyword'],
-            \ 'spinner': ['fg', 'Label'],
-            \ 'gutter':  ['bg', 'Normal'],
-            \ 'header':  ['fg', 'Comment'] }
+      \ { 'fg':    ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'String'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'Normal'],
+      \ 'info':    ['fg', 'Keyword'],
+      \ 'border':  ['fg', 'Ignore'],
+      \ 'prompt':  ['fg', 'Statement'],
+      \ 'pointer': ['fg', 'Statement'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'gutter':  ['bg', 'Normal'],
+      \ 'header':  ['fg', 'Comment'] }
 
 autocmd! FileType fzf set laststatus=0 noruler
-            \| autocmd BufLeave <buffer> set laststatus=2 ruler
+      \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
 " --- Limelight Settings ---
 nnoremap <silent> <Leader>l :Limelight!! <CR>
@@ -179,8 +199,8 @@ highlight LineNr None
 highlight CursorLineNr None
 
 autocmd ColorScheme *
-            \ highlight clear LineNr
-            \ highlight clear SignColumn
+      \ highlight clear LineNr
+      \ highlight clear SignColumn
 
 highlight NonText guifg=bg
 
