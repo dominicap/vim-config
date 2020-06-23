@@ -110,31 +110,128 @@ function! RelativePath() abort
 endfunction
 
 " --- LSC Settings ---
-
 let g:lsc_server_commands = {
-      \  "dart": {
-      \    "command": "dart " . $DART_SDK . "/snapshots/analysis_server.dart.snapshot --lsp --client-id vim --completion-model " . $DART_SDK . "/model/lexeme/",
-      \    "message_hooks": {
-      \      "initialize": {
-      \        "initializationOptions": {
-      \          "onlyAnalyzeProjectsWithOpenFiles": v:true
-      \        }
-      \      }
-      \    },
-      \    "log_level": -1,
-      \    "suppress_stderr": v:true
+      \ "dart": {
+      \   "command": "dart " . $DART_SDK . "/snapshots/analysis_server.dart.snapshot --lsp --client-id vim --completion-model " . $DART_SDK . "/model/lexeme/",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "javascriptreact": {
+      \   "command": "flow lsp",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "javascript": {
+      \   "command": "flow lsp",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "go": {
+      \   "command": "gopls serve",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true,
+      \ },
+      \ "python": {
+      \   "command": "pyls",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true,
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true,
+      \ },
+      \ "rust": {
+      \   "command": "rls",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true,
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true,
+      \ },
+      \ "swift": {
+      \   "command": "xcrun sourcekit-lsp",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "typescript": {
+      \   "command": "lsp-tsserver --stdio",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "typescriptreact": {
+      \   "command": "lsp-tsserver --stdio",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
       \ } }
 
 let g:lsc_auto_map = v:true
+
+let g:javascript_plugin_flow = 1
 
 " --- MuComplete Settings ---
 set completeopt+=menuone
 set completeopt+=noselect
 
-inoremap <silent> <plug>(MUcompleteFwdKey) <right>
-imap <right> <plug>(MUcompleteCycFwd)
-inoremap <silent> <plug>(MUcompleteBwdKey) <left>
-imap <left> <plug>(MUcompleteCycBwd)
+" inoremap <silent> <plug>(MUcompleteFwdKey) <right>
+" imap <right> <plug>(MUcompleteCycFwd)
+" inoremap <silent> <plug>(MUcompleteBwdKey) <left>
+" imap <left> <plug>(MUcompleteCycBwd)
 
 " --- Gutentag Settings ---
 let g:gutentags_cache_dir = '~/.vim/pack/bundle/start/gutentags/.cache'
