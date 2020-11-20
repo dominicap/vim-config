@@ -73,7 +73,7 @@ set noshowmode
 set laststatus=2
 
 let g:lightline = {
-      \ 'colorscheme': 'base16_chalk',
+      \ 'colorscheme': 'base16_atelier_lakeside',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'branch' ],
@@ -111,6 +111,30 @@ endfunction
 
 " --- LSC Settings ---
 let g:lsc_server_commands = {
+      \ "c": {
+      \   "command": "clangd --background-index",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "cpp": {
+      \   "command": "clangd --background-index",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
       \ "dart": {
       \   "command": "dart " . $DART_SDK . "/snapshots/analysis_server.dart.snapshot --lsp --client-id vim --completion-model " . $DART_SDK . "/model/lexeme/",
       \   "message_hooks": {
@@ -218,7 +242,19 @@ let g:lsc_server_commands = {
       \   },
       \   "log_level": -1,
       \   "suppress_stderr": v:true
-      \ } }
+      \ },
+      \ "vue": {
+      \   "command": "vls",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ }, }
 
 let g:lsc_auto_map = v:true
 
@@ -277,7 +313,10 @@ nnoremap <silent> <Leader>l :Limelight!! <CR>
 nnoremap <silent> <C-f> :FormatCode <CR>
 
 " --- Fugitive Settings ---
-set diffopt+=vertical
+if &diff
+    set diffopt-=internal
+    set diffopt+=vertical
+endif
 
 " --- Emmet Settings ---
 let g:user_emmet_leader_key=','
