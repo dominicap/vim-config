@@ -9,9 +9,15 @@ set backspace=indent,eol,start
 set ruler
 set number
 set relativenumber
+
 set showcmd
+
 set incsearch
 set hlsearch
+
+set ignorecase
+set smartcase
+
 set hidden
 set splitbelow
 
@@ -35,6 +41,7 @@ set softtabstop=4
 set expandtab
 
 set termwinsize=12x0
+autocmd FileType qf 12wincmd_
 
 let loaded_netrwPlugin = 1
 
@@ -73,7 +80,7 @@ set noshowmode
 set laststatus=2
 
 let g:lightline = {
-      \ 'colorscheme': 'base16_atelier_lakeside',
+      \ 'colorscheme': 'base16_atelier_cave',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'branch' ],
@@ -147,8 +154,8 @@ let g:lsc_server_commands = {
       \   "log_level": -1,
       \   "suppress_stderr": v:true
       \ },
-      \ "javascriptreact": {
-      \   "command": "flow lsp",
+      \ "java": {
+      \   "command": "bash ~/.java/java-ls/dist/lang_server_mac.sh",
       \   "message_hooks": {
       \     "initialize": {
       \       "initializationOptions": {
@@ -160,6 +167,18 @@ let g:lsc_server_commands = {
       \   "suppress_stderr": v:true
       \ },
       \ "javascript": {
+      \   "command": "flow lsp",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true
+      \ },
+      \ "javascriptreact": {
       \   "command": "flow lsp",
       \   "message_hooks": {
       \     "initialize": {
@@ -184,7 +203,19 @@ let g:lsc_server_commands = {
       \   "suppress_stderr": v:true,
       \ },
       \ "python": {
-      \   "command": "pyls",
+      \   "command": "pyright-langserver --stdio",
+      \   "message_hooks": {
+      \     "initialize": {
+      \       "initializationOptions": {
+      \         "onlyAnalyzeProjectsWithOpenFiles": v:true,
+      \       }
+      \     }
+      \   },
+      \   "log_level": -1,
+      \   "suppress_stderr": v:true,
+      \ },
+      \ "ruby": {
+      \   "command": "srb tc --lsp --disable-watchman",
       \   "message_hooks": {
       \     "initialize": {
       \       "initializationOptions": {
@@ -244,7 +275,7 @@ let g:lsc_server_commands = {
       \   "suppress_stderr": v:true
       \ },
       \ "vue": {
-      \   "command": "vls",
+      \   "command": "vls --stdio",
       \   "message_hooks": {
       \     "initialize": {
       \       "initializationOptions": {
@@ -258,16 +289,16 @@ let g:lsc_server_commands = {
 
 let g:lsc_auto_map = v:true
 
-let g:javascript_plugin_flow = 1
-
 " --- MuComplete Settings ---
 set completeopt+=menuone
 set completeopt+=noselect
 
-" inoremap <silent> <plug>(MUcompleteFwdKey) <right>
-" imap <right> <plug>(MUcompleteCycFwd)
-" inoremap <silent> <plug>(MUcompleteBwdKey) <left>
-" imap <left> <plug>(MUcompleteCycBwd)
+set completeopt-=preview
+
+inoremap <silent> <plug>(MUcompleteFwdKey) <right>
+imap <right> <plug>(MUcompleteCycFwd)
+inoremap <silent> <plug>(MUcompleteBwdKey) <left>
+imap <left> <plug>(MUcompleteCycBwd)
 
 " --- Gutentag Settings ---
 let g:gutentags_cache_dir = '~/.vim/pack/bundle/start/gutentags/.cache'
@@ -287,6 +318,22 @@ autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>
 nnoremap <tab><tab> :FZF --no-color <CR>
 nnoremap <Leader><tab> :Buffers <CR>
 
+" let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset': 1, 'border': 'none' } }
+let g:fzf_layout = { 'window': 'bo 12new' }
+
+autocmd! FileType fzf set noruler laststatus=0
+      \| autocmd WinLeave <buffer> set ruler laststatus=2
+      \| autocmd WinEnter <buffer> set noruler laststatus=0
+
+" function! s:fzf_statusline()
+"   highlight fzf1 ctermfg=161 ctermbg=251
+"   highlight fzf2 ctermfg=23 ctermbg=251
+"   highlight fzf3 ctermfg=237 ctermbg=251
+"   setlocal statusline=%#fzf1#%#fzf2#%#fzf3#
+" endfunction
+
+" autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 let g:fzf_colors =
       \ { 'fg':    ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
@@ -303,9 +350,6 @@ let g:fzf_colors =
       \ 'gutter':  ['bg', 'Normal'],
       \ 'header':  ['fg', 'Comment'] }
 
-autocmd! FileType fzf set laststatus=0 noruler
-      \| autocmd BufLeave <buffer> set laststatus=2 ruler
-
 " --- Limelight Settings ---
 nnoremap <silent> <Leader>l :Limelight!! <CR>
 
@@ -314,8 +358,8 @@ nnoremap <silent> <C-f> :FormatCode <CR>
 
 " --- Fugitive Settings ---
 if &diff
-    set diffopt-=internal
-    set diffopt+=vertical
+  set diffopt-=internal
+  set diffopt+=vertical
 endif
 
 " --- Emmet Settings ---
