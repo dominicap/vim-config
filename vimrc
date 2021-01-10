@@ -24,7 +24,7 @@ set wildmenu
 set wildmode=full
 set wildignorecase
 
-set shortmess=IFc
+" set shortmess=IFc
 
 set mouse=a
 set nowrap
@@ -133,6 +133,119 @@ function SetupLightlineColors() abort
   call lightline#colorscheme()
 endfunction
 
+" " --- LSC Settings ---
+" let g:lsc_server_commands = {
+"       \ "dart": {
+"       \   "command": "dart " . $DART_SDK . "/snapshots/analysis_server.dart.snapshot --lsp --client-id vim --completion-model " . $DART_SDK . "/model/lexeme/",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true
+"       \ },
+"       \ "javascriptreact": {
+"       \   "command": "flow lsp",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true
+"       \ },
+"       \ "javascript": {
+"       \   "command": "flow lsp",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true
+"       \ },
+"       \ "go": {
+"       \   "command": "gopls serve",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true,
+"       \ },
+"       \ "python": {
+"       \   "command": "pyright-langserver --stdio",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true,
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true,
+"       \ },
+"       \ "rust": {
+"       \   "command": "rls",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true,
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true,
+"       \ },
+"       \ "swift": {
+"       \   "command": "xcrun sourcekit-lsp",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true
+"       \ },
+"       \ "typescript": {
+"       \   "command": "lsp-tsserver --stdio",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true
+"       \ },
+"       \ "typescriptreact": {
+"       \   "command": "lsp-tsserver --stdio",
+"       \   "message_hooks": {
+"       \     "initialize": {
+"       \       "initializationOptions": {
+"       \         "onlyAnalyzeProjectsWithOpenFiles": v:true
+"       \       }
+"       \     }
+"       \   },
+"       \   "log_level": -1,
+"       \   "suppress_stderr": v:true
+"       \ } }
+
+" let g:lsc_auto_map = v:true
+
 " --- Grep Settings ---
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -140,18 +253,44 @@ endif
 
 " --- Syntax & Color Settings ---
 filetype plugin indent on
-
 syntax on
+
+function! ANSILightHighlights() abort
+  highlight Visual ctermbg=7 term=None cterm=None
+
+  highlight StatusLine term=None cterm=None
+  highlight QuickFixLine ctermbg=7 ctermfg=0 term=bold cterm=bold
+
+  highlight WildMenu ctermbg=7 term=bold cterm=bold
+
+  highlight PMenu ctermbg=7 ctermfg=0
+  highlight PMenuSel ctermbg=7 ctermfg=0 term=bold cterm=bold
+
+  highlight PMenuSbar ctermbg=None ctermfg=None
+  highlight PMenuThumb ctermbg=None ctermfg=None
+
+  highlight CursorColumn ctermfg=None ctermbg=7
+endfunction
+
+function! ANSIDarkHighlights() abort
+  highlight Visual ctermbg=8 term=None cterm=None
+
+  highlight StatusLine term=None cterm=None
+  " highlight QuickFixLine ctermbg=8 term=bold cterm=bold
+
+  " highlight WildMenu ctermbg=8 ctermfg=15 term=bold cterm=bold
+
+  " highlight PMenu ctermbg=8 ctermfg=15
+  " highlight PMenuSel ctermbg=8 ctermfg=15 term=bold cterm=bold
+
+  highlight PMenuSbar ctermbg=None ctermfg=None
+  highlight PMenuThumb ctermbg=None ctermfg=None
+
+  " highlight CursorColumn ctermfg=None ctermbg=8
+endfunction
+
+augroup ANSIHighlights
+  autocmd!
+  autocmd ColorScheme * call ANSIDarkHighlights()
+augroup END
 colorscheme peachpuff
-
-highlight Visual term=None cterm=None
-highlight StatusLine term=None cterm=None
-highlight QuickFixLine term=bold cterm=bold
-
-highlight WildMenu ctermbg=None ctermfg=None
-highlight WildMenu term=bold cterm=bold
-
-highlight PMenu ctermbg=7 ctermfg=0
-highlight PMenuSel ctermbg=7 cterm=bold
-highlight PMenuSbar ctermbg=None ctermfg=None
-highlight PMenuThumb ctermbg=None ctermfg=None
