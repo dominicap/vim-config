@@ -12,10 +12,11 @@ set number
 set showcmd
 
 set incsearch
-set hlsearch
 
 set ignorecase
 set smartcase
+
+set expandtab
 
 set hidden
 set splitbelow
@@ -24,7 +25,7 @@ set wildmenu
 set wildmode=full
 set wildignorecase
 
-set laststatus=0
+set laststatus=1
 
 set mouse=a
 set nowrap
@@ -34,7 +35,10 @@ nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 
-set termwinsize=12x0
+" TODO: AutoResize
+" TODO: Last Status
+" TODO: Dim inactive
+set termwinsize=8*0
 
 let loaded_netrwPlugin = 1
 
@@ -59,6 +63,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nmap <silent> <Leader>w :set list!<CR>
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅,space:⋅,extends:❯,precedes:❮
+set fillchars=vert:\ ,
 set showbreak=↪
 
 autocmd BufWritePre * %s/\s\+$//e
