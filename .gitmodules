@@ -13,15 +13,3 @@
 [submodule "pack/bundle/start/surround"]
 	path = pack/bundle/start/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "pack/bundle/start/vim-graphql"]
-	path = pack/bundle/start/vim-graphql
-	url = https://github.com/jparise/vim-graphql.git
-[submodule "pack/bundle/start/vim-kotlin"]
-	path = pack/bundle/start/vim-kotlin
-	url = https://github.com/udalov/kotlin-vim.git
-[submodule "pack/bundle/start/vim-sx"]
-	path = pack/bundle/start/vim-sx
-	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
-[submodule "pack/bundle/start/vim-vue"]
-	path = pack/bundle/start/vim-vue
-	url = https://github.com/posva/vim-vue.git
