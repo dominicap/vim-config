@@ -35,11 +35,6 @@ nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 
-" TODO: AutoResize
-" TODO: Last Status
-" TODO: Dim inactive
-set termwinsize=8*0
-
 let loaded_netrwPlugin = 1
 
 " --- Macro Settings ---
@@ -59,6 +54,10 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+let &t_SI.="\e[5 q"
+let &t_SR.="\e[4 q"
+let &t_EI.="\e[1 q"
+
 " --- White Space Settings ---
 nmap <silent> <Leader>w :set list!<CR>
 
@@ -68,18 +67,8 @@ set showbreak=↪
 
 autocmd BufWritePre * %s/\s\+$//e
 
-" --- QuickFix Settings ---
-let g:qf_max_height = 12
-
-" --- Grep Settings ---
-if executable('rg')
-  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-endif
-
 " --- Syntax & Color Settings ---
 filetype plugin indent on
 
-set bg=dark
 syntax on
-
 colorscheme ansi

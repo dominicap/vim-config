@@ -70,67 +70,67 @@ if &bg == "dark"
   highlight Ignore              ctermfg=darkgray       ctermbg=black           cterm=NONE
   highlight Error               ctermfg=white          ctermbg=darkred         cterm=NONE
   highlight Todo                ctermfg=white          ctermbg=darkyellow      cterm=NONE
-else
-  " highlight ColorColumn         ctermfg=lightgray       ctermbg=darkgray       cterm=BOLD
-  " highlight Conceal             ctermfg=darkgray        ctermbg=lightgray      cterm=BOLD
-  " highlight Cursor              ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight CursorColumn        ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight CursorLine          ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight Directory           ctermfg=darkgray        ctermbg=white          cterm=UNDERLINE
-  " highlight DiffAdd             ctermfg=darkgreen       ctermbg=white          cterm=NONE
-  " highlight DiffChange          ctermfg=darkyellow      ctermbg=white          cterm=NONE
-  " highlight DiffDelete          ctermfg=darkred         ctermbg=white          cterm=NONE
-  " highlight DiffText            ctermfg=darkblue        ctermbg=white          cterm=NONE
-  " highlight EndOfBuffer         ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight ErrorMsg            ctermfg=black           ctermbg=darkred        cterm=NONE
-  " highlight VertSplit           ctermfg=lightgray       ctermbg=darkgray       cterm=NONE
-  " highlight Folded              ctermfg=lightgray       ctermbg=darkgray       cterm=BOLD
-  " highlight FoldColumn          ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight SignColumn          ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight IncSearch           ctermfg=NONE            ctermbg=NONE           cterm=INVERSE
-  " highlight LineNr              ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight LineNrAbove         ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight LineNrBelow         ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight CursorLineNr        ctermfg=darkgray        ctermbg=white          cterm=BOLD
-  " highlight MatchParen          ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight MoreMsg             ctermfg=darkgreen       ctermbg=white          cterm=NONE
-  " highlight ModeMsg             ctermfg=darkgray        ctermbg=white          cterm=BOLD
-  " highlight NonText             ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight Normal              ctermfg=black           ctermbg=white          cterm=NONE
-  " highlight Pmenu               ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight PmenuSel            ctermfg=lightgray       ctermbg=darkgray       cterm=NONE
-  " highlight PmenuSbar           ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight PmenuThumb          ctermfg=lightgray       ctermbg=darkgray       cterm=NONE
-  " highlight Question            ctermfg=darkgray        ctermbg=white          cterm=BOLD
-  " highlight QuickFixLine        ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight Search              ctermfg=NONE            ctermbg=NONE           cterm=INVERSE,UNDERLINE
-  " highlight SpecialKey          ctermfg=darkgray        ctermbg=white          cterm=BOLD
-  " highlight SpellBad            ctermfg=black           ctermbg=darkred        cterm=NONE
-  " highlight SpellCap            ctermfg=black           ctermbg=darkyellow     cterm=NONE
-  " highlight SpellRare           ctermfg=black           ctermbg=darkmagenta    cterm=NONE
-  " highlight SpellLocal          ctermfg=black           ctermbg=darkcyan       cterm=NONE
-  " highlight StatusLine          ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight StatusLineNC        ctermfg=lightgray       ctermbg=white          cterm=NONE
-  " highlight StatusLineTerm      ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight StatusLineTermNC    ctermfg=lightgray       ctermbg=white          cterm=NONE
-  " highlight TabLine             ctermfg=lightgray       ctermbg=white          cterm=NONE
-  " highlight TabLineFill         ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight TabLineSel          ctermfg=darkgray        ctermbg=white          cterm=NONE
-  " highlight Title               ctermfg=darkgray        ctermbg=white          cterm=BOLD
-  " highlight Visual              ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
-  " highlight VisualNOS           ctermfg=darkgray        ctermbg=lightgray      cterm=UNDERLINE
-  " highlight WarningMsg          ctermfg=darkred         ctermbg=white          cterm=NONE
-  " highlight WildMenu            ctermfg=darkgray        ctermbg=lightgray      cterm=NONE
+elseif &bg == "light"
+  highlight ColorColumn         ctermfg=darkgray       ctermbg=lightgray       cterm=NONE
+  highlight Conceal             ctermfg=darkgray       ctermbg=lightgray       cterm=NONE
+  highlight Cursor              ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight CursorColumn        ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight CursorLine          ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight Directory           ctermfg=darkgray       ctermbg=white           cterm=UNDERLINE
+  highlight DiffAdd             ctermfg=white          ctermbg=lightgreen      cterm=NONE
+  highlight DiffChange          ctermfg=white          ctermbg=lightyellow     cterm=NONE
+  highlight DiffDelete          ctermfg=white          ctermbg=lightred        cterm=NONE
+  highlight DiffText            ctermfg=white          ctermbg=lightblue       cterm=NONE
+  highlight EndOfBuffer         ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight ErrorMsg            ctermfg=black          ctermbg=lightred        cterm=NONE
+  highlight VertSplit           ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight Folded              ctermfg=darkgray       ctermbg=lightgray       cterm=NONE
+  highlight FoldColumn          ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight SignColumn          ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight IncSearch           ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight LineNr              ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight LineNrAbove         ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight LineNrBelow         ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight CursorLineNr        ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight MatchParen          ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight MoreMsg             ctermfg=lightgreen     ctermbg=white           cterm=NONE
+  highlight ModeMsg             ctermfg=darkgray       ctermbg=white           cterm=BOLD
+  highlight NonText             ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight Normal              ctermfg=black          ctermbg=white           cterm=NONE
+  highlight Pmenu               ctermfg=darkgray       ctermbg=lightgray       cterm=NONE
+  highlight PmenuSel            ctermfg=darkgray       ctermbg=lightgray       cterm=INVERSE
+  highlight PmenuSbar           ctermfg=darkgray       ctermbg=lightgray       cterm=NONE
+  highlight PmenuThumb          ctermfg=lightgray      ctermbg=darkgray        cterm=NONE
+  highlight Question            ctermfg=darkgray       ctermbg=white           cterm=BOLD
+  highlight QuickFixLine        ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight Search              ctermfg=NONE           ctermbg=NONE            cterm=INVERSE,UNDERLINE
+  highlight SpecialKey          ctermfg=darkgray       ctermbg=white           cterm=BOLD
+  highlight SpellBad            ctermfg=black          ctermbg=lightred        cterm=NONE
+  highlight SpellCap            ctermfg=black          ctermbg=lightyellow     cterm=NONE
+  highlight SpellRare           ctermfg=black          ctermbg=lightmagenta    cterm=NONE
+  highlight SpellLocal          ctermfg=black          ctermbg=lightcyan       cterm=NONE
+  highlight StatusLine          ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight StatusLineNC        ctermfg=lightgray      ctermbg=white           cterm=NONE
+  highlight StatusLineTerm      ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight StatusLineTermNC    ctermfg=lightgray      ctermbg=white           cterm=NONE
+  highlight TabLine             ctermfg=lightgray      ctermbg=white           cterm=NONE
+  highlight TabLineFill         ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight TabLineSel          ctermfg=darkgray       ctermbg=white           cterm=NONE
+  highlight Title               ctermfg=darkgray       ctermbg=white           cterm=BOLD
+  highlight Visual              ctermfg=NONE           ctermbg=NONE            cterm=INVERSE
+  highlight VisualNOS           ctermfg=NONE           ctermbg=NONE            cterm=INVERSE,UNDERLINE
+  highlight WarningMsg          ctermfg=lightred       ctermbg=white           cterm=NONE
+  highlight WildMenu            ctermfg=darkgray       ctermbg=white           cterm=INVERSE
 
-  " highlight Comment             ctermfg=lightgray       ctermbg=white          cterm=NONE
-  " highlight Constant            ctermfg=lightred        ctermbg=white          cterm=NONE
-  " highlight Special             ctermfg=lightmagenta    ctermbg=white          cterm=NONE
-  " highlight Identifier          ctermfg=lightblue       ctermbg=white          cterm=NONE
-  " highlight Statement           ctermfg=lightyellow     ctermbg=white          cterm=NONE
-  " highlight PreProc             ctermfg=lightcyan       ctermbg=white          cterm=NONE
-  " highlight Type                ctermfg=lightgreen      ctermbg=white          cterm=NONE
-  " highlight Underlined          ctermfg=darkgray        ctermbg=white          cterm=UNDERLINE
-  " highlight Ignore              ctermfg=lightgray       ctermbg=white          cterm=NONE
-  " highlight Error               ctermfg=black           ctermbg=lightred       cterm=NONE
-  " highlight Todo                ctermfg=black           ctermbg=lightyellow    cterm=NONE
+  highlight Comment             ctermfg=lightgray      ctermbg=white           cterm=NONE
+  highlight Constant            ctermfg=darkred        ctermbg=white           cterm=NONE
+  highlight Special             ctermfg=darkmagenta    ctermbg=white           cterm=NONE
+  highlight Identifier          ctermfg=darkblue       ctermbg=white           cterm=NONE
+  highlight Statement           ctermfg=darkyellow     ctermbg=white           cterm=NONE
+  highlight PreProc             ctermfg=darkcyan       ctermbg=white           cterm=NONE
+  highlight Type                ctermfg=darkgreen      ctermbg=white           cterm=NONE
+  highlight Underlined          ctermfg=darkgray       ctermbg=white           cterm=UNDERLINE
+  highlight Ignore              ctermfg=lightgray      ctermbg=white           cterm=NONE
+  highlight Error               ctermfg=black          ctermbg=darkred         cterm=NONE
+  highlight Todo                ctermfg=black          ctermbg=darkyellow      cterm=NONE
 end
