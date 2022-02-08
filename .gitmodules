@@ -1,12 +1,6 @@
 [submodule "pack/bundle/start/commentary"]
 	path = pack/bundle/start/commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "pack/bundle/start/lsc"]
-	path = pack/bundle/start/lsc
-	url = https://github.com/natebosch/vim-lsc.git
-[submodule "pack/bundle/start/qf"]
-	path = pack/bundle/start/qf
-	url = https://github.com/romainl/vim-qf.git
 [submodule "pack/bundle/start/sleuth"]
 	path = pack/bundle/start/sleuth
 	url = https://github.com/tpope/vim-sleuth.git
